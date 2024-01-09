@@ -3,8 +3,9 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-router.get('/api/categories', async (req, res) => {
+router.get('/', async (req, res) => {
   // find all categories
+  console.log("category")
   // be sure to include its associated Products
   try {
     const categories = await Category.findAll({
@@ -17,7 +18,7 @@ router.get('/api/categories', async (req, res) => {
   }
 });
 
-router.get('/api/categories/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
@@ -37,7 +38,7 @@ router.get('/api/categories/:id', async (req, res) => {
   }
 });
 
-router.post('/categories', async (req, res) => {
+router.post('/', async (req, res) => {
   // create a new category
   try {
     const newCategory = await Category.create(req.body);
@@ -48,7 +49,7 @@ router.post('/categories', async (req, res) => {
   }
 });
 
-router.put('/categories/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
     const updatedCategory = await Category.update(req.body, {
@@ -67,7 +68,7 @@ router.put('/categories/:id', async (req, res) => {
   }
 });
 
-router.delete('/categories/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
     const deletedCategory = await Category.destroy({
